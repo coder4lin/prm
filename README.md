@@ -1,12 +1,14 @@
 # prm - Prompt & Resource Manager
 
-> Manage AI project components (skills, agents, MCPs) across platforms
+> 为项目提供一个干净独立skills、agent、mcp配置包
 
-## Installation
+## 如何安装
 
 ```bash
-# Clone and install
-git clone https://github.com/yourusername/prm.git
+# 安装nodejs
+
+# 安装prm
+git clone https://github.com/coder4lin/prm.git
 cd prm
 bash install.sh
 ```
@@ -14,60 +16,47 @@ bash install.sh
 ## Usage
 
 ```bash
-# Initialize project with platforms
-prm init -t claude-code -t cursor
+# 初始化仓库地址，默认在 ~/.prm/store/，可自行设定仓库目录
+prm init-config [store-dictory]
 
-# Add component from local store
-prm add skill my-skill --tool claude-code
+# 帮助
+prm help
 
-# Add with global installation
-prm add agent my-agent --tool claude-code --global
+# 建立仓库索引
+prm index
 
-# Copy instead of symlink
-prm add mcp my-mcp --tool claude-code --copy
+# 查看仓库数据
+prm store
 
-# Remove component
-prm remove skill my-skill --tool claude-code
+# 在项目目录下面初始化目录
+prm init
 
-# Sync all components from prm.json
+# 根据prm.json同步组件
 prm sync
 
-# List installed components
+# 查看当前项目下安装的组件
 prm list
+
 ```
 
-## Commands
+## 项目下常用命令
 
 | Command | Description |
 |---------|-------------|
-| `prm init` | Initialize project with platform selection |
-| `prm add <type> <name>` | Add component from local store |
-| `prm remove <type> <name>` | Remove component from project |
-| `prm sync` | Sync all components from prm.json |
-| `prm list` | List installed components |
+| `prm init` | 为项目初始化组件环境 |
+| `prm sync` | 根据prm.json从本地仓库同步组件 |
+| `prm list` | 列出以安装的组件 |
 
-## Options
 
-- `-t, --tool <platform>` - Target platform
-- `-g, --global` - Install globally
-- `--copy` - Copy instead of symlink
+## 支持系统
+MacOS
 
-## Supported Platforms
-
+## 支持平台
 - claude-code
-- copilot
 - cursor
-- antigravity
-- gemini-cli
 - opencode
-- aider
-- windsurf
-- openclaw
-- qwen
-- trae
-- kimi
 
-## Local Store Structure
+## 本地仓库
 
 ```
 ~/.prm/store/
@@ -76,12 +65,16 @@ prm list
 └── mcp/       # MCP configurations (JSON)
 ```
 
-## Configuration
+## 配置
 
-Global config: `~/.prm/config.json`
+全局配置: `~/.prm/config.json`，
+项目配置: `PROJECT/.prm/prm.json`
 
-Project config: `.prm/prm.json`
+## ROADMAP
++ 支持Windows、Linux
++ 支持更多的IDE
++ 目前需要手动配置仓库内容，后期会增加install命令，用于安装组件
 
 ## License
 
-MIT
+Apache LICENSE
