@@ -1,0 +1,53 @@
+{
+  "name": "prm",
+  "version": "1.0.0",
+  "description": "Prompt & Resource Manager - Manage AI project components",
+  "type": "module",
+  "bin": {
+    "prm": "./bin/prm.mjs"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "build:bin": "pnpm build && pkg . --targets node18-macos-x64 --output bin/prm",
+    "dev": "node src/index.ts",
+    "test": "vitest",
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "format:check": "prettier --check \"src/**/*.ts\"",
+    "prepare": "husky",
+    "prepack": "pnpm build",
+    "postinstall": "echo 'PRM installed successfully!'"
+  },
+  "keywords": [
+    "cli",
+    "ai-agents",
+    "prompt-manager",
+    "resource-manager"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^11.0.0",
+    "enquirer": "^2.4.0",
+    "gray-matter": "^4.0.3",
+    "simple-git": "^3.33.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "husky": "^9.1.0",
+    "pkg": "^5.8.1",
+    "prettier": "^3.8.0",
+    "typescript": "^5.9.0",
+    "vitest": "^4.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "pnpm@10.17.1"
+}
